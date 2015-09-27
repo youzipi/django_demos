@@ -1,0 +1,68 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    outline: 0;
+    font-weight: inherit;
+    font-style: inherit;
+    font-family: inherit;
+    font-size: 100%;
+    vertical-align: baseline
+}
+
+header nav ul li {
+    float: left;
+}
+
+#container {
+    width: 94%;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+#main {
+    width: 75%;
+    margin: 2em 0 0;
+    float: left;
+}
+
+body {
+    background: #ddd;
+    font-family: Consolas, "Helvetica Neue", "Helvetica", "Microsoft YaHei", "WenQuanYi Micro Hei", Arial, sans-serif;
+    font-size: 150%;
+    color: #191919;
+    line-height: 1.5;
+}
+
+#main section.post {
+    background: #fafafa;
+    margin-bottom: .125em;
+}
+
+#asidepart {
+    position: relative;
+    float: left;
+    width: 18%;
+    margin: 2em 0 0 3%;
+    background: #fafafa;
+    padding: .5em 2% 1em;
+}
+
+.post, .page {
+    background: #fafafa;
+}
+
+article .article-content {
+    padding: 1.5em 4%;
+    color: #413f3f;
+    font-size: 100%;
+}
+
+#main section.post a {
+    padding: 1em;
+    display: block;
+}
+
+a, a:link, a:active, a:hover, a:visited {
+    text-decoration: none;
+}
