@@ -1,0 +1,24 @@
+{% extends "quan/base.html" %}
+{#{% block content %}#}
+
+{% block main %}
+    <div id="main">
+
+        {% for post in posts %}
+            <section class="post" id="template" itemscope="" itemprop="blogPost">
+                <a href="/quan/p/{{ post.pk }}" itemprop="url">
+                    <h1 itemprop="name">{{ post.content }}</h1>
+
+                    <p itemprop="content">{{ post.add_time }}</p>
+                    <time datetime="{{ post.add_time }}"
+                          itemprop="datePublished">{{ post.add_time }}
+                    </time>
+                    <li>0</li>
+                </a>
+            </section>
+        {% endfor %}
+
+    </div>
+{% endblock %}
+
+{#{% endblock %}#}
