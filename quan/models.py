@@ -45,7 +45,7 @@ class Article(models.Model):
         return self.tags.split(',')
 
     def __str__(self):
-        return self.content
+        return self.content.encode('utf-8') # 中文问题
 
 # class PythonPost(Document):
 #     url = StringField()
