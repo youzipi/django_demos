@@ -11,6 +11,7 @@ from quan.forms import ArticleForm
 from quan.models import Article  # , PythonPost
 
 
+
 # 缓存
 # try:
 #    cache = caches['memcache']
@@ -56,6 +57,8 @@ class ArticleView(View):
 
 
 class DashBroadView(ListView):
+    template_name = 'quan/dashbroad.html'
+    context_object_name = 'article_list'
     model = Article
 
 
@@ -71,6 +74,12 @@ class ArticlesView(View):
             return HttpResponseRedirect('/quan')
         else:
             return render_to_response('quan/edit.html', {'form': form}, context_instance=RequestContext(request))
+
+
+class TagView(View):
+    def get(self, request):
+        tags = request.GET
+        print tags
 
 
 def new(request):
