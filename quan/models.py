@@ -1,3 +1,4 @@
+# coding=utf-8
 import datetime
 
 from django.db import models
@@ -33,10 +34,23 @@ class User(models.Model):
         return self.name
 
 
-class Post(models.Model):
-    content = models.CharField(max_length=1000)
+class Article(models.Model):
+    content = models.CharField(max_length=200)
     add_time = models.DateTimeField()
+    category = models.CharField(max_length=20,default="uncategory")
+    tags = models.CharField(max_length=200, default="no-tag", verbose_name=u'标签', help_text=u'用逗号分隔')
     author = models.ForeignKey(User)
 
+    def get_tags(self):
+        return self.tags.split(',')
+
     def __str__(self):
-        return self.content
+        return self.content.encode('utf-8') # 中文问题
+
+# class PythonPost(Document):
+#     url = StringField()
+#     title = StringField()
+#     pub_date = DateTimeField()
+#     description = StringField()
+#     meta = {"db_alias": "test"}
+#

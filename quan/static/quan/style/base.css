@@ -6,7 +6,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     font-weight: inherit;
     font-style: inherit;
     font-family: inherit;
-    font-size: 100%;
+    /*font-size: 100%;*/
     vertical-align: baseline
 }
 
@@ -28,7 +28,7 @@ header nav ul li {
 
 body {
     background: #ddd;
-    font-family: Consolas, "Helvetica Neue", "Helvetica", "Microsoft YaHei", "WenQuanYi Micro Hei", Arial, sans-serif;
+    font-family: Consolas, "WenQuanYi Micro Hei", "Helvetica Neue", "Helvetica", "Microsoft YaHei", Arial, sans-serif;
     font-size: 150%;
     color: #191919;
     line-height: 1.5;
@@ -65,4 +65,8 @@ article .article-content {
 
 a, a:link, a:active, a:hover, a:visited {
     text-decoration: none;
+}
+
+.panel {
+    padding: 15px;
 }

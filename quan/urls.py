@@ -1,7 +1,7 @@
 from django.conf.urls import url
 
 from . import views
-from quan.views import AboutView, ArticleView, ArticlesView
+from quan.views import AboutView, ArticleView, ArticlesView, DashBroadView, TagView
 
 urlpatterns = [
     url(r'^$', views.index, name="index"),
@@ -12,4 +12,6 @@ urlpatterns = [
     url(r'^(?P<question_id>[0-9]+)/vote/$', views.vote, name='vote'),
     url(r'^new/', views.new, name='new'),
     url(r'^about/', AboutView.as_view()),
+    url(r'^dashbroad/$', DashBroadView.as_view()),
+    url(r'^tag/(?P<tag>[0-9]+/$)', TagView.as_view()),
 ]
