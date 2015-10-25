@@ -47,10 +47,3 @@ class Article(models.Model):
     def __str__(self):
         return self.content.encode('utf-8') # 中文问题
 
-# class PythonPost(Document):
-#     url = StringField()
-#     title = StringField()
-#     pub_date = DateTimeField()
-#     description = StringField()
-#     meta = {"db_alias": "test"}
-#
