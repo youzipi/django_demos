@@ -19,5 +19,6 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^quan/', include('quan.urls')),
+    url(r'^pieces/', include('pieces.urls')),
     # url(r'^markdown/', include('django_markdown')),
 ]

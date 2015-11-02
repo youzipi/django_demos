@@ -1,0 +1,51 @@
+{% extends "quan/base.html" %}
+{% block content %}
+
+    <div class="panel panel-default">
+        {#        <div class="alert alert-success" role="alert">...</div>#}
+        {#        <div class="alert alert-info" role="alert" data-dismiss="alert">...</div>#}
+        {#        <div class="alert alert-danger" role="alert">...</div>#}
+
+        <div class="alert alert-warning alert-dismissable">
+            <button type="button" class="close" data-dismiss="alert"
+                    aria-hidden="true">
+                &times;
+
+            </button>
+            Warning:{{ error }}
+        </div>
+
+        <div class="panel-heading">DashBroad</div>
+        <div class="panel-body">
+            <p>balabala</p>
+        </div>
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th>Record</th>
+                <th>content</th>
+                <th>category</th>
+                <th>tags</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for article in article_list %}
+                <tr>
+                    <td><span class="badge">5/14</span>
+                        <meter value="5" max="14"></meter>
+                    </td>
+                    <td>{{ article.content }}</td>
+                    <td>{{ article.category }}</td>
+                    <td>
+                        {% for tag in article.get_tags %}
+                            <a href="/tag/{{ tag }}/">
+                                <span class="label label-info">{{ tag }}</span>
+                            </a>
+                        {% endfor %}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

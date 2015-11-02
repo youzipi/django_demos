@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    {% load staticfiles %}
+    <title>{% block title %}Page Unnamed{% endblock %}</title>
+    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet"/>
+    <link href="{% static '_pieces/style/base.css' %}" rel="stylesheet"/>
+    <title></title>
+</head>
+<body>
+<!-- navbar-->
+{% block header %}
+    {% block navbar %}
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Blooog</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/pieces">首页</a></li>
+                        <li><a href="/archives">存档</a></li>
+                        <li><a href="/pieces/new">写博客</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="/pieces/about">关于</a></li>
+                        <li><a href="/admin">Admin</a></li>
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container-fluid -->
+        </nav>
+    {% endblock %}
+    {% if error %}
+        <p><strong>{{ error }}</strong></p>
+    {% endif %}
+{% endblock %}
+
+<div id="container">
+    {% block content %}
+        {% block main %}
+            <div id="main">
+                <section class="post" id="template" itemscope="" itemprop="blogPost">
+                    <a href="/article/0" itemprop="url">
+                        <h1 itemprop="name">Unnname</h1>
+
+                        <p itemprop="content">23dadasad</p>
+                        <time datetime="2015年6月8日 03:43"
+                              itemprop="datePublished">2015年6月8日 03:43
+                        </time>
+                        <li>0</li>
+                    </a>
+                </section>
+            </div>
+        {% endblock %}
+
+
+
+    {% endblock %}
+</div>
+<script src="{% static 'jquery/jquery-2.1.0.min.js' %}"></script>
+<script src="{% static 'jquery/jquery.cookie.js' %}"></script>
+<script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+<script type="text/javascript">
+</script>
+</body>
+</html>

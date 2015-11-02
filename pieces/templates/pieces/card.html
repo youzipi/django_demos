@@ -1,0 +1,28 @@
+{% extends "pieces/base.html" %}
+
+{% block title %}
+    Card Page
+{% endblock %}
+
+{% block content %}
+    <article class="card">
+        <div class="badge">
+            <span class="badge-text">Count={{ card.record_count }}</span>
+        </div>
+        <h1> card={{ card }}</h1>
+
+        {% for record in card.record_set.all %}
+            <section>
+                <div class="current-comment js-friendly-links">
+                    record = {{ record }}
+                </div>
+                <div class="record_box">
+                    <textarea name="" id="" cols="30" rows="10">record = {{ record }}</textarea>
+                </div>
+                <span class="date" dt="{{ record.add_time }}" title="{{ record.add_time }}">{{ record.add_time }}</span>
+            </section>
+        {% endfor %}
+
+    </article>
+
+{% endblock %}

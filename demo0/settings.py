@@ -31,15 +31,16 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
-    'bootstrap_admin',
+    # 'bootstrap_admin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'quan',
+    # 'quan',
     'django_markdown',
+    'pieces'
     # 'south',
 )
 
@@ -90,8 +91,8 @@ DATABASES = {
     #     # The following settings are not used with sqlite3:
     #     'USER': 'youzipi',
     #     'PASSWORD': '111',
-    #     'HOST': '',  # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
-    #     'PORT': '',  # Set to empty string for default.
+    #     'HOST': '127.0.0.1',  # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
+    #     'PORT': '27017',  # Set to empty string for default.
     # }
 }
 
@@ -120,3 +121,14 @@ STATIC_URL = '/static/'
 # )
 #
 # STATIC_ROOT = os.path.join(BASE_DIR, 'mysite/static')
+# MONGODB_DATABASES = {
+#     "default": {
+#         "name": "test",
+#         "host": "127.0.0.1:27017",
+#         "username": "youzipi",
+#         "password": 111,
+#     },
+# }
+#
+# SESSION_ENGINE = 'django_mongoengine.sessions'
+# SESSION_SERIALIZER = 'django_mongoengine.sessions.BSONSerializer'
