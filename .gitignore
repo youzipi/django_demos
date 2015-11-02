@@ -1,5 +1,7 @@
+migrations
 .idea
 
 *.pyc
 
 db.sqlite3
+*.deb
