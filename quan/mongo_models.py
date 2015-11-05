@@ -18,8 +18,8 @@ class PyPost(Document):
         return "%s %s %s %s" % (self.url, self.pub_time, self.title, self.description)
 
 
-for p in PyPost.objects.all():
-    try:
-        print p
-    except Exception:
-        print p.url
+# for p in PyPost.objects.all():
+#     try:
+#         print p
+#     except Exception:
+#         print p.url
