@@ -2,6 +2,7 @@ migrations
 .idea
 
 *.pyc
+test_0/
 
 db.sqlite3
 *.deb
