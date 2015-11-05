@@ -15,7 +15,7 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-
+DEFAULT_CHARSET = 'utf-8'
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
@@ -53,6 +53,9 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    # The per-site cache
+    'django.middleware.cache.UpdateCacheMiddleware',
+    'django.middleware.cache.FetchFromCacheMiddleware',
 )
 
 ROOT_URLCONF = 'demo0.urls'
@@ -80,10 +83,44 @@ WSGI_APPLICATION = 'demo0.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
-DATABASES = {
+CACHES = {
+    # memcached
+    # 'default': {
+    #     'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+    #     'LOCATION': '127.0.0.1:11211',
+    # }
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+        'LOCATION': 'my_cache',
+    }
+
+}
+
+DATABASES = {
+    # sqlite
+    #
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    # },
+    # mysql
+    #
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'pieces',
+        'USER': 'root',
+        'PASSWORD': '111',
+        'HOST': '127.0.0.1',
+        'PORT': '3306',
+        'OPTIONS': {
+            'sql_mode': 'TRADITIONAL',
+            'charset': 'utf8',
+            'init_command': 'SET '
+                            'storage_engine=INNODB,'
+                            'character_set_connection=utf8,'
+                            'collation_connection=utf8_bin,'
+                            'SESSION TRANSACTION ISOLATION LEVEL READ COMMITTED',
+        }  # Note that later we find out that this is still not enough. Read on.,
     },
     # 'test': {
     #     'ENGINE': 'django_mongodb_engine',  # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
@@ -132,3 +169,40 @@ STATIC_URL = '/static/'
 #
 # SESSION_ENGINE = 'django_mongoengine.sessions'
 # SESSION_SERIALIZER = 'django_mongoengine.sessions.BSONSerializer'
+
+
+##debug_tool
+if DEBUG:
+    INTERNAL_IPS = ('127.0.0.1',)
+    MIDDLEWARE_CLASSES += (
+        'debug_toolbar.middleware.DebugToolbarMiddleware',
+    )
+
+    INSTALLED_APPS += (
+        'debug_toolbar',
+    )
+
+    DEBUG_TOOLBAR_PANELS = [
+        'debug_toolbar.panels.versions.VersionsPanel',
+        'debug_toolbar.panels.timer.TimerPanel',
+        'debug_toolbar.panels.settings.SettingsPanel',
+        'debug_toolbar.panels.headers.HeadersPanel',
+        'debug_toolbar.panels.request.RequestPanel',
+        'debug_toolbar.panels.sql.SQLPanel',
+        'debug_toolbar.panels.staticfiles.StaticFilesPanel',
+        'debug_toolbar.panels.templates.TemplatesPanel',
+        'debug_toolbar.panels.cache.CachePanel',
+        'debug_toolbar.panels.signals.SignalsPanel',
+        'debug_toolbar.panels.logging.LoggingPanel',
+        'debug_toolbar.panels.redirects.RedirectsPanel',
+    ]
+
+    DEBUG_TOOLBAR_CONFIG = {
+        # Toolbar options
+        'RENDER_PANELS': True,
+        'RESULTS_CACHE_SIZE': 3,
+        'SHOW_COLLAPSED': True,
+        # Panel options
+        'INTERCEPT_REDIRECTS': True,
+        'SQL_WARNING_THRESHOLD': 100,  # milliseconds
+    }
